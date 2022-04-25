@@ -1,0 +1,151 @@
+#Options +FollowSymlinks
+
+RewriteEngine on
+
+
+#RewriteBase /sgr/
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+#RewriteRule ^(.*) index.php/$1 [L]
+#RewriteRule ^(.*) index [L,QSA]
+
+#RewriteRule ^Annonce/([0-9])$ Annonce_Ctrl/index/&1 [L,QSA]
+
+#RewriteRule ^louer/*/([0-9])$ Annonce_Ctrl/index/&1 [L,QSA]
+
+#RewriteRule ^Detail/Louer/([0-9])+$  Detail/1/&1 [L,QSA]
+
+
+#RewriteRule ^venues/([0-9]+)/?$ venues.php?page=$1 [NC,L]
+RewriteRule ^Annonce_Ctrl/index/([0-9]+)/?$ index.php?c=Annonce_Ctrl&v=index&id=$1 [NC,L]
+
+RewriteRule ^services/([0-9-a-z]+)/?$ index.php?c=services&v=$1 [NC,L]
+RewriteRule ^contractor/([0-9-a-z]+)/?$ index.php?c=contractor&v=$1 [NC,L]
+
+RewriteRule ^estimation-bien/?$ index.php?c=Estimer_bien&v=index [NC,L]
+RewriteRule ^estimate-property/?$ index.php?c=Estimer_bien&v=index [NC,L]
+RewriteRule ^estimer_bien/([0-9-a-z]+)/?$ index.php?c=Estimer_bien&v=$1&m=$1 [NC,L]
+RewriteRule ^estimer_bien/index/([0-9-a-z]+)/?$ index.php?c=estimer_bien&v=index&suc=$1 [NC,L]
+
+
+
+RewriteRule ^switchLanguage/([0-9-a-z]+)/?$ index.php?c=index&v=switchLanguage&l=$1 [NC,L]
+
+
+RewriteRule ^annonce/([0-9-a-z]+)/([0-9-a-z]+)/([0-9-a-z]+)/([0-9-a-z]+)/([0-9-a-z]+)/?$ index.php?c=Annonce_Ctrl&v=index&id=$5 [NC,L]
+RewriteRule ^property/([0-9-a-z]+)/([0-9-a-z]+)/([0-9-a-z]+)/([0-9-a-z]+)/([0-9-a-z]+)/?$ index.php?c=Annonce_Ctrl&v=index&id=$5 [NC,L]
+
+RewriteRule ^menu/([0-9-a-z]+)/([0-9-a-z]+)/?$ index.php?c=index&v=index&v=menu&id=$2 [NC,L]
+RewriteRule ^menu/([0-9-a-z]+)/([0-9-a-z]+)/([0-9]+)/?$ index.php?c=index&v=index&v=menu&id=$2&page=$3 [NC,L]
+RewriteRule ^region/([0-9-a-z]+)/([0-9-a-z]+)/?$ index.php?c=index&m=searchByRegion&id=$2 [NC,L]
+RewriteRule ^Annonce_Ctrl/createPdf/([0-9]+)/?$ index.php?c=Annonce_Ctrl&m=createPdf&id=$1 [NC,L]
+
+
+RewriteRule ^contact/?$ index.php?c=contact&v=index [NC,L]
+RewriteRule ^contact/envoyer/?$ index.php?c=contact&v=envoyer&m=envoyer [NC,L]
+RewriteRule ^contact/index/([0-9-a-z]+)/?$ index.php?c=contact&v=index&suc=$1 [NC,L]
+
+
+RewriteRule ^about/?$ index.php?c=about&v=index [NC,L]
+RewriteRule ^about/change_language/?$ index.php?c=about&m=change_language&id=$1 [NC,L]
+RewriteRule ^useful-info/?$ index.php?c=Infos_utiles&v=index [NC,L]
+RewriteRule ^our-agency/?$ index.php?c=Notre_agence&v=index [NC,L]
+
+RewriteRule ^infos-utiles/?$ index.php?c=Infos_utiles&v=index [NC,L]
+RewriteRule ^notre-agence/?$ index.php?c=Notre_agence&v=index [NC,L]
+
+RewriteRule ^back_ctrl/index/login/?$ index.php?d=back_ctrl&c=index&v=login [NC,L]
+RewriteRule ^back_ctrl/?$ index.php?d=back_ctrl&c=index [NC,L]
+RewriteRule ^back_ctrl/index/?$ index.php?d=back_ctrl&c=index [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/?$ index.php?d=back_ctrl&c=Annonce_Ctrl [NC,L]
+RewriteRule ^back_ctrl/Alertemail/?$ index.php?d=back_ctrl&c=Alertemail [NC,L]
+RewriteRule ^back_ctrl/Notificationbien/?$ index.php?d=back_ctrl&c=Notificationbien [NC,L]
+RewriteRule ^back_ctrl/Actualite_Ctrl/?$ index.php?d=back_ctrl&c=Actualite_Ctrl [NC,L]
+RewriteRule ^back_ctrl/Texte_Ctrl/?$ index.php?d=back_ctrl&c=Texte_Ctrl [NC,L]
+RewriteRule ^back_ctrl/Estimationbien/?$ index.php?d=back_ctrl&c=Estimationbien [NC,L]
+
+RewriteRule ^back_ctrl/Annonce_Ctrl/detail_statut_type/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detail_statut_type&id=$1 [NC,L]
+
+RewriteRule ^back_ctrl/Annonce_Ctrl/del_image_annonce/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=del_image_annonce&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/del_image_principal/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=del_image_principal&id=$1 [NC,L]
+
+
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_devise/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_devise&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/detail_devise/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detail_devise&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_statut/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_statut&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/detail_statut/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detail_statut&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_tag/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_tag&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/detail_tag/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detail_tag&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_agent/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_agent&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/modifAgent/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=modifAgent&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/detailCaracteristique/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detailCaracteristique&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_car/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_car&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_type/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_type&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/detail_type/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detail_type&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_client/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_client&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/detail_client/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detail_client&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_region/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_region&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/detail_region/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detail_region&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/restore/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=restore&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/detail/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detail&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_trash/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_trash&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_sousregion/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_sousregion&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_annonce/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_annonce&id=$1 [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/update_annonce/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=update_annonce&id [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/save_annonce/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=save_annonce&id [NC,L]
+RewriteRule ^back_ctrl/Annonce_Ctrl/index/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=index&page=$1 [NC,L]
+
+RewriteRule ^back_ctrl/Annonce_Ctrl/delete_statut_type/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_statut_type&id=$1 [NC,L]
+
+
+RewriteRule ^back_ctrl/Annonce_Ctrl/detail_sousregion/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detail_sousregion&id=$1 [NC,L]
+
+RewriteRule ^back_ctrl/Estimationbien/([0-9-a-z]+)/([0-9]+)/?$ index.php?d=back_ctrl&c=Estimationbien&m=$1&v=$1&id=$2 [NC,L]
+RewriteRule ^back_ctrl/Alertemail/([0-9-a-z]+)/([0-9]+)/?$ index.php?d=back_ctrl&c=Alertemail&m=$1&v=$1&id=$2 [NC,L]
+
+RewriteRule ^back_ctrl/Annonce_Ctrl/([0-9-a-z]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=$1 [NC,L]
+
+RewriteRule ^back_ctrl/([0-9-a-z]+)/?$ index.php?d=back_ctrl&c=$1 [NC,L]
+RewriteRule ^back_ctrl/Actualite_Ctrl/([0-9-a-z]+)/?$ index.php?d=back_ctrl&c=Actualite_Ctrl&m=$1 [NC,L]
+RewriteRule ^back_ctrl/Actualite_Ctrl/([0-9-a-z]+)/([0-9]+)/?$ index.php?d=back_ctrl&c=Actualite_Ctrl&m=$1&id=$2 [NC,L]
+
+RewriteRule ^back_ctrl/Texte_Ctrl/([0-9-a-z]+)/?$ index.php?d=back_ctrl&c=Texte_Ctrl&m=$1 [NC,L]
+RewriteRule ^back_ctrl/Texte_Ctrl/([0-9-a-z]+)/([0-9]+)/?$ index.php?d=back_ctrl&c=Texte_Ctrl&m=$1&id=$2 [NC,L]
+
+
+#homepage
+RewriteRule ^index/switchLanguage/([0-9-a-z]+)/?$ index.php?c=index&m=index&l=$1 [NC,L]
+RewriteRule ^index/search/?$ index.php?c=index&m=index&s=1 [NC,L]
+RewriteRule ^alerte_email/?$ index.php?c=alerte_email&v=index [NC,L]
+RewriteRule ^alerte_email/envoyer/?$ index.php?c=alerte_email&v=index&a=envour [NC,L]
+RewriteRule ^Alerte_email/index/([0-9-a-z]+)/?$ index.php?c=alerte_email&v=index&suc=$1 [NC,L]
+
+
+
+RewriteRule ^index/convert_devise/?$ index.php?c=index&v=index&con=1 [NC,L]
+RewriteRule ^index/convert_metric/?$ index.php?c=index&v=index&con=2 [NC,L]
+
+
+
+
+RewriteRule ^back_ctrl/Annonce_Ctrl/([0-9-a-z]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&v=$1 [NC,L]
+
+RewriteRule ^back_ctrl/index/logout/?$ index.php?d=back_ctrl&c=index&v=logout [NC,L]
+
+
+#RewriteCond %{HTTP_HOST} ^patrickpatisserie.info/sgr$
+
+#RewriteRule ^(.*) http://patrickpatisserie.info/sgr/$1 [QSA,L,R=301]
+
+
+
+
+
+
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit

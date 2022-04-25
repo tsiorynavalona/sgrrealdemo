@@ -1,0 +1,82 @@
+Options +FollowSymlinks
+
+RewriteEngine on
+
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*) index.php/$1 [L,QSA]
+
+
+
+#below was already #
+#RewriteRule ^(.*) index [L,QSA]
+
+#RewriteRule ^Annonce/([0-9])$ Annonce_Ctrl/index/&1 [L,QSA]
+
+#RewriteRule ^louer/*/([0-9])$ Annonce_Ctrl/index/&1 [L,QSA]
+
+#RewriteRule ^Detail/Louer/([0-9])+$  Detail/1/&1 [L,QSA]
+
+
+
+
+
+RewriteCond %{HTTP_HOST} ^www.patrickpatisserie.info/sgr$
+
+
+RewriteRule ^(.*) http://patrickpatisserie.info/sgr/$1 [QSA,L,R=301]
+
+
+
+
+
+
+
+<ifModule mod_env.c>
+
+  SetEnv KeepAlive On
+
+  SetEnv KeepAliveTimeout 100
+
+  SetEnv MaxKeepAliveRequests 500
+
+</ifModule>
+
+
+
+<IfModule mod_headers.c>
+
+  Header unset Connection
+
+  Header set Connection keep-alive
+
+
+
+  Header unset Keep-Alive
+
+  Header set Keep-Alive timeout=100,max=500
+
+	
+
+</IfModule>
+
+
+
+<IFModule mod_deflate.c>
+
+	<filesmatch "\.(js|css|html|jpg|png|mp4|php)$">
+
+		SetOutputFilter DEFLATE
+
+	</filesmatch>
+
+</IFModule>
+
+
+
+
+
