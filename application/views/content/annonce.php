@@ -148,6 +148,7 @@ margin-bottom:-20px;
 					
                         <?php
                         $cars = $annonce->getCaracteristiques();
+						var_dump($cars);
                         $icones = $annonce->getIcones();
                         if (!empty($icones) || !empty($cars)) {
                             ?>

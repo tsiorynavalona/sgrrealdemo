@@ -17,6 +17,7 @@ class Caracteristiques {
     private $id_car;
     private $val;
     private $val_car;
+  
 
 //    private $id_langue;
 
@@ -32,6 +33,7 @@ class Caracteristiques {
         return $this->val_car;
     }
 
+
     function setId_car($id_car) {
         $this->id_car = $id_car;
     }
@@ -43,5 +45,7 @@ class Caracteristiques {
     function setVal_car($val_car) {
         $this->val_car = $val_car;
     }
+
+ 
 
 }

@@ -49,13 +49,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   |
   | Examples:	my-controller/index	-> my_controller/index
   |		my-controller/my-method	-> my_controller/my_method
+
  */
-//$route['default_controller'] = 'Index';
+
+
+
+
+$route['default_controller'] = 'Index';
+
+
+
+
 
 // Annonce individuelle
 // annonce/statut/type/region/sousregion/titre-id
 
-$route['detail/(:num)'] = "back_ctrl/Annonce_Ctrl/detail/$1";
+// $route['back_ctrl/AN/(:any)/(:any)'] = "back_ctrl/$1/$2/$3";
+
+// $route['back_ctrl/([a-z]+)/(:any)'] = "back_ctrl/Annonce_Ctrl/$1/$2";
+
+// $route['back_ctrl/([a-z]+)'] = "back_ctrl/Annonce_Ctrl/$1";
+
+// $route['back_ctrl'] = "back_ctrl/Annonce_Ctrl";
+
+// $route['back_ctrl'] = 'back_ctrl/index';
+
 
 $route['annonce/([a-z-A-Z-]+)/([a-z-A-Z-/]+)/([a-z-A-Z-]+)/([a-z-A-Z-]+)/([a-z-A-Z-0-9-]+)-([0-9]+)'] = "Annonce_Ctrl/index/$7";
 $route['property/([a-z-A-Z-]+)/([a-z-A-Z-/]+)/([a-z-A-Z-]+)/([a-z-A-Z-]+)/([a-z-A-Z-0-9-]+)-([0-9]+)'] = "Annonce_Ctrl/index/$6";
@@ -77,7 +95,14 @@ $route['success'] = "Contact/success";
 $route['estimation-bien'] = "estimer_bien";
 $route['estimate-property'] = "estimer_bien";
 
-$route['back_ctrl/(:id)'] = "back_ctrl/Annonce_Ctrl/detail/$1";
+//recherche
+
+$route['recherche_multicritere/(:num)'] = "Index/recherche_multicritere/$1";
+$route['recherche_multicritere'] = "Index/index";
+
+
+
+
 
 
 

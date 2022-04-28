@@ -43,6 +43,8 @@ RewriteRule ^menu/([0-9-a-z]+)/([0-9-a-z]+)/([0-9]+)/?$ index.php?c=index&v=inde
 RewriteRule ^region/([0-9-a-z]+)/([0-9-a-z]+)/?$ index.php?c=index&m=searchByRegion&id=$2 [NC,L]
 RewriteRule ^Annonce_Ctrl/createPdf/([0-9]+)/?$ index.php?c=Annonce_Ctrl&m=createPdf&id=$1 [NC,L]
 
+#RewriteRule ^recherche_multicritere/?$ index.php?c=Index&m=recherche_multicritere&page=$1 [NC,L]
+
 
 RewriteRule ^contact/?$ index.php?c=contact&v=index [NC,L]
 RewriteRule ^contact/envoyer/?$ index.php?c=contact&v=envoyer&m=envoyer [NC,L]
@@ -90,6 +92,8 @@ RewriteRule ^back_ctrl/Annonce_Ctrl/detail_client/([0-9]+)/?$ index.php?d=back_c
 RewriteRule ^back_ctrl/Annonce_Ctrl/delete_region/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_region&id=$1 [NC,L]
 RewriteRule ^back_ctrl/Annonce_Ctrl/detail_region/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detail_region&id=$1 [NC,L]
 RewriteRule ^back_ctrl/Annonce_Ctrl/restore/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=restore&id=$1 [NC,L]
+
+
 RewriteRule ^back_ctrl/Annonce_Ctrl/detail/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=detail&id=$1 [NC,L]
 RewriteRule ^back_ctrl/Annonce_Ctrl/delete_trash/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_trash&id=$1 [NC,L]
 RewriteRule ^back_ctrl/Annonce_Ctrl/delete_sousregion/([0-9]+)/?$ index.php?d=back_ctrl&c=Annonce_Ctrl&m=delete_sousregion&id=$1 [NC,L]

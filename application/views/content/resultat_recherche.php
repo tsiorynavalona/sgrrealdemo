@@ -2,6 +2,7 @@
 //echo "<pre>";
 //print_r($_REQUEST);
 //exit;
+
 $id_type = $id_statut = $chambre = $surface_min = $surface_max = $reference = $prix_min = $prix_max = "";
 if (isset($_REQUEST) && !empty($_REQUEST)) {
 
@@ -261,10 +262,11 @@ if (isset($_REQUEST) && !empty($_REQUEST)) {
             </div>
             <br>
             <div class="page">
+			
 
                 <ul class="pagination pagination-sm">
                     <?php if ($page != 1) { ?>
-                        <li><a class="numpage" href="<?php echo site_url() . "/" . $url . "/" . ($page - 1) ?>" data-page="prev"> < </a></li>
+                        <li><a class="numpage" href="<?php echo base_url()  . $url . "/" . ($page - 1) ?>" data-page="prev"> < </a></li>
                         <?php
                     }
                     $i = intval($page / 5) * 5 + 1;
@@ -275,12 +277,12 @@ if (isset($_REQUEST) && !empty($_REQUEST)) {
                         $max = $nb_page;
                     for ($i; $i <= $max; $i++) {
                         ?>
-                        <li><a class="numpage" href="<?php echo site_url() . "/" . $url . "/" . $i ?>"><?php echo $i; ?></a></li>
+                        <li><a class="numpage" href="<?php echo base_url()  . $url . "/" . $i ?>"><?php echo $i; ?></a></li>
                         <?php
                     }
                     if ($page < $nb_page && $page <= $nb_page) {
                         ?>
-                        <li><a class="numpage" href="<?php echo site_url() . "/" . $url . "/" . ($page + 1) ?>" data-page="next" > > </a></li>
+                        <li><a class="numpage" href="<?php echo site_url() . $url . "/" . ($page + 1) ?>" data-page="next" > > </a></li>
                     <?php } ?>
                 </ul>
 

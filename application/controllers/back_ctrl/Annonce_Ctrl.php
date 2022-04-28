@@ -107,13 +107,13 @@ class Annonce_Ctrl extends CI_Controller {
     }
 
     public function detail($id=null) {
-		var_dump($id);
 		
         if ($this->session->userdata('admin') != null) {
 			
             // if ($id == "") {
             //     redirect('back_ctrl');
             // }
+			
             $annonce = $this->Annonce_Model->getById($id, 'french');
             $annonce_en = $this->Annonce_Model->getById($id, 'english');
             $annonce->setTitre_annonce_en($annonce_en->getTitre_annonce());
@@ -157,6 +157,10 @@ class Annonce_Ctrl extends CI_Controller {
 
             $this->_data['sous_menu_actif'] = "Bien";
             $this->_data['contents'] = 'back_content/ajout_annonce';
+		
+         
+
+			
             $this->ChargerPage($this->_data);
         } else {
             $this->load->view('back_content/login');
@@ -164,6 +168,7 @@ class Annonce_Ctrl extends CI_Controller {
     }
 
     public function update_annonce() {
+	
         $posts = $this->input->post();
         $annonce = $this->Annonce_Model->getById($posts['id_ann'], 'french');
 
@@ -306,12 +311,14 @@ class Annonce_Ctrl extends CI_Controller {
         $annonce->setIs_featuredproperty(0);
         $annonce->setPar_mois(0);
         $annonce->setCaracteristiques($caracteristiques);
+		
         $annonce->setIcones($icones);
 
         if (isset($posts['is_propertyfeatured']))
             $annonce->setIs_featuredproperty($posts['is_propertyfeatured']);
         if (isset($posts['par_mois']))
             $annonce->setPar_mois($posts['par_mois']);
+		
 
         $this->Annonce_Model->modify($annonce);
         redirect('back_ctrl');
@@ -390,6 +397,7 @@ class Annonce_Ctrl extends CI_Controller {
             if ($posts['val_car'][$key] != '') {
                 $caracteristiques[] = $temp;
             }
+
         }
         $icones = array();
 		$surfaceval = 0;
@@ -406,7 +414,7 @@ class Annonce_Ctrl extends CI_Controller {
 					
                 }
             }
-if ($id_icone == '4') {//surface
+		if ($id_icone == '4') {//surface
                 if (isset($posts['id_mesure2']) && $posts['id_mesure2'] != '') {
 					$annonce->setMeasure_Habit($posts['id_mesure2']);
                     $mesure = new Mesure();
@@ -596,6 +604,12 @@ charset = UTF-8' . "\r\n";
         $this->Type_Model->remove($type);
         redirect('back_ctrl/Annonce_Ctrl/Type');
     }
+    // public function delete_type($id) {
+    //     $type = new Type_immobilier();
+    //     $type->setId_type($id);
+    //     $this->Type_Model->remove($type);
+    //     redirect('back_ctrl/Annonce_Ctrl/Type');
+    // }
 
     /*
      * ajout type
@@ -1382,7 +1396,7 @@ charset = UTF-8' . "\r\n";
         $type = new Statut_type();
         $type->setId_statut_type($id);
         $this->Statut_Type_Model->remove($type);
-        redirect('back_ctrl/Annonce_Ctrl/StatutType');
+        redirect('back_ctrl/Annonce_Ctrl/Menu');
     }
 
     /*

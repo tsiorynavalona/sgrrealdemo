@@ -101,6 +101,7 @@ class Search extends CI_Controller {
       } */
 
     public function recherche_multicritere($page = null) {
+		
         $data['url'] = 'Search/recherche_multicritere';
         if ($page == null || $page == "") {
             $page = 1;

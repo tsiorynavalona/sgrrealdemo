@@ -80,7 +80,8 @@ class Index extends CI_Controller {
 		
 		if(isset($_GET["qsearch"])){
 			
-			$data['url'] = 'index/recherche_multicritere';
+			
+			$data['url'] = 'index.php/recherche_multicritere';
 			$data['nb_donnees_afficher'] = 10;
 			$criteres = $this->input->get();
 			if ($page == null || $page == "") {
@@ -99,6 +100,7 @@ class Index extends CI_Controller {
 			if (!isset($criteres['id_sousregion'])) {
 				$criteres['id_sousregion'] = '';
 			}
+			var_dump($criteres);
 	//        $critInCols = array("id_type" => $posts["id_type"], "id_statut" => $posts["id_statut"], "id_region" => $posts["id_region"], "annonce.reference" => $posts["reference"]);
 	//        $and = array("prix>=" => $posts['prix_min'], "prix<=" => $posts['prix_max'], "nom_icone" => "Chambre", "icone.val" => $posts["chambre"]);
 	//        $or = array("prix>=" => $posts['prix_min'], "prix<=" => $posts['prix_max'], "nom_icone" => "Chambre", "icone.val" => $posts["chambre"]);
@@ -170,13 +172,15 @@ class Index extends CI_Controller {
 	
 	//echo '<pre>';print_r($criteres);echo '</pre>';exit;
 			$data['total_results'] = $this->Annonce_Model->searchByCrit($criteres, $this->session->userdata('site_lang'));
+			
+
 			$data['results'] = $this->Annonce_Model->searchByCrit($criteres, $this->session->userdata('site_lang'), $data['nb_donnees_afficher'], $page);
 	//        $data['results'][] = $data['results'][0];
-$posts = $this->input->get();
+			$posts = $this->input->get();
 
-$data['total_results'] = $this->Annonce_Model->quickSearch($posts, $this->session->userdata('site_lang'));
-        $data['results'] = $this->Annonce_Model->quickSearch($posts, $this->session->userdata('site_lang'), $data['nb_donnees_afficher'], $page);
-
+			$data['total_results'] = $this->Annonce_Model->quickSearch($posts, $this->session->userdata('site_lang'));
+			$data['results'] = $this->Annonce_Model->quickSearch($posts, $this->session->userdata('site_lang'), $data['nb_donnees_afficher'], $page);
+	
 
 
 			$data['page'] = $page;
@@ -406,6 +410,7 @@ $data['total_results'] = $this->Annonce_Model->quickSearch($posts, $this->sessio
         } else {
             $data['nb_page'] = intval($nbr_total_donnees / $data['nb_donnees_afficher'] + 1);
         }
+		
 
         $data['contents'] = 'content/resultat_recherche';
         $this->load->view('templates/template', $data);
@@ -505,7 +510,11 @@ $data['total_results'] = $this->Annonce_Model->quickSearch($posts, $this->sessio
 
     public function recherche_multicritere($page = null) {
 
-        $data['url'] = 'index/recherche_multicritere';
+		
+	
+	
+
+        $data['url'] = 'index.php/recherche_multicritere/';
         $data['nb_donnees_afficher'] = 10;
         $criteres = $this->input->get();
         if ($page == null || $page == "") {
@@ -524,6 +533,8 @@ $data['total_results'] = $this->Annonce_Model->quickSearch($posts, $this->sessio
         if (!isset($criteres['id_sousregion'])) {
             $criteres['id_sousregion'] = '';
         }
+
+	
 //        $critInCols = array("id_type" => $posts["id_type"], "id_statut" => $posts["id_statut"], "id_region" => $posts["id_region"], "annonce.reference" => $posts["reference"]);
 //        $and = array("prix>=" => $posts['prix_min'], "prix<=" => $posts['prix_max'], "nom_icone" => "Chambre", "icone.val" => $posts["chambre"]);
 //        $or = array("prix>=" => $posts['prix_min'], "prix<=" => $posts['prix_max'], "nom_icone" => "Chambre", "icone.val" => $posts["chambre"]);
@@ -596,6 +607,13 @@ $data['total_results'] = $this->Annonce_Model->quickSearch($posts, $this->sessio
 //echo '<pre>';print_r($criteres);echo '</pre>';exit;
         $data['total_results'] = $this->Annonce_Model->searchByCrit($criteres, $this->session->userdata('site_lang'));
         $data['results'] = $this->Annonce_Model->searchByCrit($criteres, $this->session->userdata('site_lang'), $data['nb_donnees_afficher'], $page);
+
+		$data['total_results'] = $this->Annonce_Model->quickSearch($criteres, $this->session->userdata('site_lang'));
+		$data['results'] = $this->Annonce_Model->quickSearch($criteres, $this->session->userdata('site_lang'), $data['nb_donnees_afficher'], $page);
+		
+		// var_dump($data['results']);
+		// die();
+
 //        $data['results'][] = $data['results'][0];
         $data['page'] = $page;
 //        $nbr_total_donnees = count(array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1, 2, 3, 4)); //pour num pagination
@@ -611,6 +629,7 @@ $data['total_results'] = $this->Annonce_Model->quickSearch($posts, $this->sessio
     }
 
     public function search($page = null) {
+		
 
         $data['url'] = 'index/search';
         if ($page == null || $page == "") {

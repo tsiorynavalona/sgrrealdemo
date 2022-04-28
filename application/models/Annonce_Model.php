@@ -174,8 +174,7 @@ class Annonce_Model extends My_Model {
                 $temp->setCaracteristiques($this->getCaracteristiques($temp, $langue));
                 $temp->setGoogle_map($rec->google_map);
                 $temp->setPar_mois($rec->par_mois);
-                ;
-                $rep[] = $temp;
+            	 $rep[] = $temp;
             }
         }
         return $rep;
@@ -1056,22 +1055,32 @@ $sql = str_replace("GROUP BY", ") GROUP BY", $sql);
 
     function saveCaracteristiques($annonce) {
         $caracteristiques = $annonce->getCaracteristiques();
+
         foreach ($caracteristiques as $car) {
+			
 			
 			
 		$query = $this->db->query("SELECT * FROM `valeur_caracteristique` where id_car='" . $car->getId_car() . "' and id_ann=".$annonce->getId_ann());
         $curcar = $query->result();
+
+		if($car->getVal_car() == 'oui') {
+			$car_eng = 'yes';
+		} else {
+			$car_eng = $car->getVal_car();
+		}
+			
+		
 		if($curcar == null){
-			$this->db->query("insert into  valeur_caracteristique (id_car,id_ann,val_car) VALUES (" . $car->getId_car() . "," . $annonce->getId_ann() . ",'" . $car->getVal_car() . "')");
+			$this->db->query("INSERT INTO  valeur_caracteristique (id_car,id_ann,val_car, val_car_eng) VALUES (" . $car->getId_car() . "," . $annonce->getId_ann() . ",'" . $car->getVal_car() ."','" . $car_eng . "')");
 		}else{
-			$this->db->query("update valeur_caracteristique set val_car='" . $car->getVal_car() . "' where id_ann=" . $annonce->getId_ann() . " and id_car=" . $car->getId_car()
-					);
+			
+			$this->db->query("UPDATE valeur_caracteristique SET val_car='".$car->getVal_car()."' ,val_car_eng='".$car_eng."' WHERE id_ann=".$annonce->getId_ann()." AND id_car=".$car->getId_car());
 		}
 			
 			
 				if (!empty($this->db->error())) {
 	//                echo "update valeur_caracteristique set val_car='" . $car->getVal_car() . "' where id_ann=" . $annonce->getId_ann() . " and id_car=" . $car->getId_car() . "<br>";
-					
+					echo ($this->db->error());
 				}
 			
 			
