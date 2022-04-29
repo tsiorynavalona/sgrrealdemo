@@ -13,6 +13,18 @@ margin-bottom:-20px;
     .left h4{
         color:#1071b4;
     }
+    
+  /* @media print {
+html, body {
+  height:200vh; 
+  margin: 0 !important; 
+  padding: 0 !important;
+  overflow: hidden;
+}  */
+/* @media print {
+    .rivah * { display:none; }
+} */
+
 </style>
 <div class="container">
     <div class="main-container">
@@ -148,7 +160,7 @@ margin-bottom:-20px;
 					
                         <?php
                         $cars = $annonce->getCaracteristiques();
-						var_dump($cars);
+						// var_dump($cars);
                         $icones = $annonce->getIcones();
                         if (!empty($icones) || !empty($cars)) {
                             ?>
@@ -228,8 +240,11 @@ margin-bottom:-20px;
 					
                 </div>
 				
-                <br>
-                <?php
+                
+               
+             <div class="rivah">
+             <br>
+             <?php
                 $map = explode(',', $annonce->getGoogle_map());
 
                 if (count($map) == 2) {
@@ -463,6 +478,7 @@ margin-bottom:-20px;
         </div>
     </div>
 </div>
+             </div>
 
 <?php
 	$sirurl = str_replace("?", "", site_url("index"));

@@ -3,7 +3,7 @@
 //print_r($_REQUEST);
 //exit;
 
-$id_type = $id_statut = $chambre = $surface_min = $surface_max = $reference = $prix_min = $prix_max = "";
+$id_type = $id_statut = $chambre = $surface_min = $surface_max = $references = $prix_min = $prix_max = "";
 if (isset($_REQUEST) && !empty($_REQUEST)) {
 
     if (isset($_REQUEST["id_type"]) && $_REQUEST["id_type"] != "") {
@@ -54,7 +54,7 @@ if (isset($_REQUEST) && !empty($_REQUEST)) {
                     <div class="row">
                         <div class="col-lg-3">
                             <h5><?php echo $par_reference; ?></h5>
-                            <input type="text" id="reference" name="reference" class="input-custom" value="<?php echo $reference; ?>">
+                            <input type="text" id="reference" name="reference" class="input-custom" value="<?php echo $references; ?>">
                         </div>
 
                         <div class="col-lg-3">
